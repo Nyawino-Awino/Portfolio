@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhoda Ndege | Digital Skills & Cloud Transformation Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+/* RESET & FONTS */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#0F172A;color:#F8FAFC;line-height:1.6;}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;}
+
+/* NAVIGATION */
+nav{position:sticky;top:0;background:#0F172A;padding:15px 0;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,0.4);}
+.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
+.nav-logo{font-weight:700;font-size:1.5rem;color:#E11D48;}
+.nav-links a{margin-left:25px;color:#F8FAFC;font-weight:500;transition:0.3s;}
+.nav-links a:hover,.nav-links a.active{color:#E11D48;}
+.hamburger{display:none;flex-direction:column;cursor:pointer;}
+.hamburger div{width:25px;height:3px;background:#F8FAFC;margin:4px 0;transition:0.4s;}
+.nav-links-mobile{display:none;flex-direction:column;background:#0F172A;position:absolute;top:60px;left:0;width:100%;padding:20px 0;}
+.nav-links-mobile a{margin:10px 0;text-align:center;}
+
+/* BUTTONS */
+.btn-primary{background:#E11D48;color:#F8FAFC;padding:12px 30px;border:none;border-radius:6px;font-weight:600;transition:0.3s;}
+.btn-primary:hover{background:#BE123C;}
+.btn-secondary{border:2px solid #E11D48;color:#E11D48;padding:10px 28px;border-radius:6px;font-weight:600;background:none;transition:0.3s;}
+.btn-secondary:hover{background:#E11D48;color:#F8FAFC;}
+
+/* SECTIONS */
+section{padding:80px 20px;}
+.container{max-width:1200px;margin:0 auto;}
+
+/* HERO */
+#hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:100vh;}
+#hero h1,#hero h2,#hero p,#hero .buttons{opacity:0;transform:translateY(20px);transition:0.8s;}
+#hero h1.visible,#hero h2.visible,#hero p.visible,#hero .buttons.visible{opacity:1;transform:translateY(0);}
+
+/* ABOUT */
+.about-container{
+  display:flex;
+  align-items:center;
+  gap:40px; /* space between photo and text */
+  flex-wrap:wrap; /* allows wrapping on smaller screens */
+}
+
+.about-photo{
+  flex:1 1 300px; /* photo takes up proportional space, min width 300px */
+  max-width:400px;
+  border-radius:10px;
+  opacity:0;
+  transform:translateX(-20px);
+  transition:0.8s;
+}
+
+.about-text{
+  flex:2 1 300px; /* text takes more space */
+  opacity:0;
+  transform:translateX(20px);
+  transition:0.8s;
+}
+
+/* Visible when fade-in triggers */
+.about-photo.visible,
+.about-text.visible{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* Responsive: stack vertically on mobile */
+@media(max-width:768px){
+  .about-container{
+    flex-direction:column;
+    text-align:center;
+  }
+  .about-text{
+    transform:translateY(20px);
+  }
+  .about-photo{
+    transform:translateY(20px);
+  }
+}
+
+
+
+/* EXPERTISE */
+#expertise{background:#1E293B;border-radius:10px;padding:40px;margin-bottom:40px;}
+.expertise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.expertise-card{background:#0F172A;padding:20px;border-radius:10px;box-shadow:0 4px 6px rgba(0,0,0,0.3);transition:0.3s;cursor:pointer;opacity:0;transform:translateY(20px);}
+.expertise-card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,0.5);}
+.expertise-card.visible{opacity:1;transform:translateY(0);}
+.expertise-card h3{color:#E11D48;margin-bottom:10px;}
+.expertise-card ul{list-style:none;padding-left:0;}
+.expertise-card ul li{margin-bottom:8px;color:#F8FAFC;}
+
+/* PROGRAMS */
+#programs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.program-card{background:#1E293B;padding:25px;border-radius:10px;transition:0.3s;cursor:pointer;opacity:0;transform:translateY(20px);}
+.program-card:hover{transform:translateY(-5px);box-shadow:0 6px 12px rgba(0,0,0,0.5);}
+.program-card.visible{opacity:1;transform:translateY(0);}
+.program-card h3{color:#E11D48;margin-bottom:10px;}
+.program-card p{color:#F8FAFC;}
+
+/* PORTFOLIO — grid layout like expertise but custom 2-1 structure */
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr); /* 2 columns for top row */
+  gap:20px;
+  justify-items:center;
+}
+
+/* Center the last card */
+.portfolio-card-center{
+  grid-column:1 / -1; /* span full width */
+  justify-self:center;
+}
+
+/* Card styling (same as expertise) */
+.portfolio-card{
+  background:#1E293B;
+  border-radius:10px;
+  overflow:hidden;
+  transition:0.3s;
+  cursor:pointer;
+  opacity:0;
+  transform:translateY(20px);
+}
+.portfolio-card.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.portfolio-card img{
+  width:100%;
+  height: 300px;
+}
+.portfolio-card h3{
+  padding:15px;
+  color:#E11D48;
+  text-align:center;
+}
+
+/* MODAL */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,0.95);justify-content:center;align-items:center;z-index:2000;}
+.modal-content{background:#1E293B;padding:30px;border-radius:10px;max-width:600px;width:90%;text-align:center;position:relative;}
+.close{position:absolute;top:10px;right:15px;font-size:1.5rem;cursor:pointer;color:#E11D48;}
+
+/* TESTIMONIALS */
+#testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.testimonial-card{background:#0F172A;border-radius:10px;padding:20px;box-shadow:0 4px 6px rgba(0,0,0,0.3);opacity:0;transform:translateY(20px);}
+.testimonial-card.visible{opacity:1;transform:translateY(0);}
+.testimonial-card p{font-style:italic;color:#F8FAFC;}
+.testimonial-card h4{color:#E11D48;margin-top:10px;font-weight:600;}
+
+/* CTA */
+#cta{text-align:center;background:#1E293B;border-radius:10px;}
+#cta h2{color:#E11D48;margin-bottom:20px;}
+
+/* FOOTER */
+footer{padding:40px 20px;text-align:center;color:#94A3B8;background:#0F172A;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  #hero h1{font-size:2.5rem;}
+  #hero h2{font-size:1.3rem;}
+  #about{flex-direction:column;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;}
+  .nav-links-mobile.active{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-logo">Rhoda Ndege</div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#programs">Programs</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#cta">Contact</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="nav-links-mobile" id="mobileMenu">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#programs">Programs</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <h1>Hi, I’m Rhoda Ndege</h1>
+    <h2>Transforming Beginners into Job-Ready Tech Professionals</h2>
+    <p>I design and deliver structured digital skills and cloud transformation programs for individuals and corporate teams worldwide.</p><br>
+    <div class="buttons">
+      <a href="#cta" class="btn-primary">Book a Consultation</a>
+      <a href="#programs" class="btn-secondary">Explore Programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-container">
+    <img src="/img/me.jpg" alt="Rhoda Ndege" class="about-photo">
+    <div id="about-text" class="about-text">
+      <h2>Bridging Skills Gaps, Transforming Careers</h2> <br>
+      <p>
+        I specialize in delivering practical, outcome-focused training in <strong>cloud computing (AWS)</strong>,
+        <strong>data analysis</strong>, and <strong>digital skills programs</strong>. I have contributed to
+        curriculum development, structured lab manuals, and remote program delivery for individuals and
+        corporate teams. My goal is to equip learners with practical competencies that lead to career readiness.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="container">
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3>Cloud Transformation</h3>
+        <ul>
+          <li>AWS Infrastructure & Architecture</li>
+          <li>IAM & Security Best Practices</li>
+          <li>Scalable Multi-Tier Deployments</li>
+          <li>Certification Preparation</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Data Analysis</h3>
+        <ul>
+          <li>Advanced Excel & BI Tools</li>
+          <li>Data Visualization & Dashboards</li>
+          <li>Business Insights & Reporting</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Curriculum Development</h3>
+        <ul>
+          <li>Learning Path Design</li>
+          <li>Lab Manuals & Assessment Frameworks</li>
+          <li>Outcome-Based Training Models</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Digital Skills Programs</h3>
+        <ul>
+          <li>Corporate & Remote Training</li>
+          <li>Cohort Management & KPIs</li>
+          <li>Employability & Career Alignment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="container">
+    <div class="program-card" onclick="openModal('bootcamp')">
+      <h3>Cloud & Digital Skills Bootcamp</h3>
+      <p>Structured beginner-to-advanced pathway with hands-on labs and certification prep.</p>
+    </div>
+    <div class="program-card" onclick="openModal('corporate')">
+      <h3>Corporate Upskilling Programs</h3>
+      <p>Tailored training for teams adopting cloud and digital skills transformation.</p>
+    </div>
+    <div class="program-card" onclick="openModal('data')">
+      <h3>Data Analysis & BI Training</h3>
+      <p>Hands-on data handling, visualization, and business insights for professional growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container portfolio-grid">
+    <div class="portfolio-card">
+      <img src="/img/cloud.jpg" alt="Project 1">
+      <h3>Cloud Deployment Project</h3>
+    </div>
+    <div class="portfolio-card">
+      <img src="/img/data1.jpg" alt="Project 2">
+      <h3>Data Analytics Dashboard</h3>
+    </div>
+    <div class="portfolio-card portfolio-card-center">
+      <img src="img/digital skills.jpg" alt="Project 3">
+      <h3>Digital Skills Program</h3>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 id="modal-title"></h3>
+    <p id="modal-body"></p>
+    <img id="modal-img" src="" style="width:100%;margin-top:20px;border-radius:10px;" alt="">
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="expertise-grid">
+    <div class="testimonial-card">
+      <p>"Clear, structured, and career-focused training — highly recommended."</p>
+      <h4>- Digital Skills Program Participant</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"From beginner to confidently deploying AWS architectures in weeks."</p>
+      <h4>- Corporate Client</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Rhoda is a great teachop. We were priviledged to have her. She understands and embraces everyone in whatever situation they are in. She is invaluable, tunampenda."</p>
+      <h4>- Student</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Rhoda was so encouraging. She always checked in whenever I haven't completed the Labs and the weeks activities.She always took a personal initiative to understand what exactly might be the issue, then offer a solution to it. This was so parent like."</p>
+      <h4>-  Cloud Student</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"Practical labs and mentorship that truly prepare you for the job market."</p>
+      <h4>- Remote Learner</h4>
+    </div>
+    <div class="testimonial-card">
+      <p>"She was warm, kind, motherly and very patient to all of us."</p>
+      <h4>- Remote Bootcamp Learner</h4>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2>Ready to Upskill Your Team or Yourself?</h2>
+    <div class="buttons" style="justify-content:center;margin-top:20px;">
+      <!-- Book a consultation-->
+      <a href="mailto:youremail@example.com"subject=Consultation%20Request&body=Hi%20[Your Name],%0A%0AI%20would%20like%20to%20book%20a%20consultation.%0A%0AThanks," class="btn-primary">Book a Consultation</a>
+      <a href="#programs" class="btn-secondary">Partner With Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-left">
+      <h3>Rhoda Ndege</h3>
+      <p>Cloud | Data | Corporate Upskilling</p>
+    </div>
+
+    <div class="footer-contact">
+      <p>
+        📧 <a href="mailto:your@email.com">awino0149@gmail.com</a>
+      </p>
+      <p>
+        📱 <a href="tel:+254700000000">+254 714 917 142</a>
+      </p>
+    </div>
+
+    <div class="footer-right">
+      <p>© 2026 Rhoda Ndege. All Rights Reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+// HAMBURGER MENU
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('active');}
+
+// MODAL
+const modal=document.getElementById('modal');
+const modalTitle=document.getElementById('modal-title');
+const modalBody=document.getElementById('modal-body');
+const modalImg=document.getElementById('modal-img');
+
+const programDetails={
+  bootcamp:{title:"Cloud & Digital Skills Bootcamp",body:"Hands-on beginner-to-advanced bootcamp covering cloud, data analysis, and digital skills with lab exercises and certification prep.",img:"portfolio1.jpg"},
+  corporate:{title:"Corporate Upskilling Programs",body:"Tailored corporate training for teams, focusing on cloud adoption, digital skills development, and remote workforce upskilling.",img:"portfolio2.jpg"},
+  data:{title:"Data Analysis & BI Training",body:"Project-based training in data cleaning, visualization, dashboards, and business insights for professional growth.",img:"portfolio3.jpg"},
+  portfolio1:{title:"Cloud Deployment Project",body:"Deployed a multi-tier cloud infrastructure on AWS demonstrating scalability and security.",img:"portfolio1.jpg"},
+  portfolio2:{title:"Data Analytics Dashboard",body:"Designed interactive dashboards for business insights using Excel and BI tools.",img:"portfolio2.jpg"},
+  portfolio3:{title:"Digital Skills Program",body:"Developed and delivered structured digital skills programs for remote learners and corporate teams.",img:"portfolio3.jpg"}
+};
+
+function openModal(prog){modal.style.display="flex";modalTitle.innerText=programDetails[prog].title;modalBody.innerText=programDetails[prog].body;modalImg.src=programDetails[prog].img;modalImg.alt=programDetails[prog].title;}
+function closeModal(){modal.style.display="none";}
+window.onclick=e=>{if(e.target==modal)closeModal();}
+
+// SCROLL ANIMATIONS
+const faders=document.querySelectorAll('#hero h1,#hero h2,#hero p,#hero .buttons,#about-text,#about img,.expertise-card,.program-card,.portfolio-card,.testimonial-card');
+const appearOnScroll=new IntersectionObserver((entries,observer)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
+  });
+},{threshold:0.3});
+faders.forEach(fader=>appearOnScroll.observe(fader));
+
+// NAV LINK HIGHLIGHT
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll(".nav-links a,.nav-links-mobile a");
+window.addEventListener("scroll",()=>{
+  let current="";
+  sections.forEach(sec=>{const sectionTop=sec.offsetTop-100;if(pageYOffset>=sectionTop){current=sec.getAttribute("id");}});
+  navLinks.forEach(a=>{a.classList.remove("active");if(a.getAttribute("href")==="#"+current){a.classList.add("active");}});
+});
+</script>
+
+</body>
+</html>
