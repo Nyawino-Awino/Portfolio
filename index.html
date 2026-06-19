@@ -3,190 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rhoda Ndege | Digital Skills & Cloud Transformation Consultant</title>
+<title>Rhoda Ndege | Cloud Engineer | Consultant</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<style>
-/* RESET & FONTS */
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:#0F172A;color:#F8FAFC;line-height:1.6;}
-h1,h2,h3,h4{font-family:'Montserrat',sans-serif;}
-a{text-decoration:none;color:inherit;}
-button{cursor:pointer;}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!--link to the external css file-->
+<link rel="stylesheet" href="style.css">
 
-/* NAVIGATION */
-nav{position:sticky;top:0;background:#0F172A;padding:15px 0;z-index:1000;box-shadow:0 2px 6px rgba(0,0,0,0.4);}
-.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px;}
-.nav-logo{font-weight:700;font-size:1.5rem;color:#E11D48;}
-.nav-links a{margin-left:25px;color:#F8FAFC;font-weight:500;transition:0.3s;}
-.nav-links a:hover,.nav-links a.active{color:#E11D48;}
-.hamburger{display:none;flex-direction:column;cursor:pointer;}
-.hamburger div{width:25px;height:3px;background:#F8FAFC;margin:4px 0;transition:0.4s;}
-.nav-links-mobile{display:none;flex-direction:column;background:#0F172A;position:absolute;top:60px;left:0;width:100%;padding:20px 0;}
-.nav-links-mobile a{margin:10px 0;text-align:center;}
-
-/* BUTTONS */
-.btn-primary{background:#E11D48;color:#F8FAFC;padding:12px 30px;border:none;border-radius:6px;font-weight:600;transition:0.3s;}
-.btn-primary:hover{background:#BE123C;}
-.btn-secondary{border:2px solid #E11D48;color:#E11D48;padding:10px 28px;border-radius:6px;font-weight:600;background:none;transition:0.3s;}
-.btn-secondary:hover{background:#E11D48;color:#F8FAFC;}
-
-/* SECTIONS */
-section{padding:80px 20px;}
-.container{max-width:1200px;margin:0 auto;}
-
-/* HERO */
-#hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:100vh;}
-#hero h1,#hero h2,#hero p,#hero .buttons{opacity:0;transform:translateY(20px);transition:0.8s;}
-#hero h1.visible,#hero h2.visible,#hero p.visible,#hero .buttons.visible{opacity:1;transform:translateY(0);}
-
-/* ABOUT */
-.about-container{
-  display:flex;
-  align-items:center;
-  gap:40px; /* space between photo and text */
-  flex-wrap:wrap; /* allows wrapping on smaller screens */
-}
-
-.about-photo{
-  flex:1 1 300px; /* photo takes up proportional space, min width 300px */
-  max-width:400px;
-  border-radius:10px;
-  opacity:0;
-  transform:translateX(-20px);
-  transition:0.8s;
-}
-
-.about-text{
-  flex:2 1 300px; /* text takes more space */
-  opacity:0;
-  transform:translateX(20px);
-  transition:0.8s;
-}
-
-/* Visible when fade-in triggers */
-.about-photo.visible,
-.about-text.visible{
-  opacity:1;
-  transform:translateX(0);
-}
-
-/* Responsive: stack vertically on mobile */
-@media(max-width:768px){
-  .about-container{
-    flex-direction:column;
-    text-align:center;
-  }
-  .about-text{
-    transform:translateY(20px);
-  }
-  .about-photo{
-    transform:translateY(20px);
-  }
-}
-
-
-
-/* EXPERTISE */
-#expertise{background:#1E293B;border-radius:10px;padding:40px;margin-bottom:40px;}
-.expertise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.expertise-card{background:#0F172A;padding:20px;border-radius:10px;box-shadow:0 4px 6px rgba(0,0,0,0.3);transition:0.3s;cursor:pointer;opacity:0;transform:translateY(20px);}
-.expertise-card:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,0.5);}
-.expertise-card.visible{opacity:1;transform:translateY(0);}
-.expertise-card h3{color:#E11D48;margin-bottom:10px;}
-.expertise-card ul{list-style:none;padding-left:0;}
-.expertise-card ul li{margin-bottom:8px;color:#F8FAFC;}
-
-/* PROGRAMS */
-#programs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-.program-card{background:#1E293B;padding:25px;border-radius:10px;transition:0.3s;cursor:pointer;opacity:0;transform:translateY(20px);}
-.program-card:hover{transform:translateY(-5px);box-shadow:0 6px 12px rgba(0,0,0,0.5);}
-.program-card.visible{opacity:1;transform:translateY(0);}
-.program-card h3{color:#E11D48;margin-bottom:10px;}
-.program-card p{color:#F8FAFC;}
-
-/* PORTFOLIO — grid layout like expertise but custom 2-1 structure */
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr); /* 2 columns for top row */
-  gap:20px;
-  justify-items:center;
-}
-
-/* Center the last card */
-.portfolio-card-center{
-  grid-column:1 / -1; /* span full width */
-  justify-self:center;
-}
-
-/* Card styling (same as expertise) */
-.portfolio-card{
-  background:#1E293B;
-  border-radius:10px;
-  overflow:hidden;
-  transition:0.3s;
-  cursor:pointer;
-  opacity:0;
-  transform:translateY(20px);
-}
-.portfolio-card.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-.portfolio-card img{
-  width:100%;
-  height: 300px;
-}
-.portfolio-card h3{
-  padding:15px;
-  color:#E11D48;
-  text-align:center;
-}
-
-/* MODAL */
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,0.95);justify-content:center;align-items:center;z-index:2000;}
-.modal-content{background:#1E293B;padding:30px;border-radius:10px;max-width:600px;width:90%;text-align:center;position:relative;}
-.close{position:absolute;top:10px;right:15px;font-size:1.5rem;cursor:pointer;color:#E11D48;}
-
-/* TESTIMONIALS */
-#testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-.testimonial-card{background:#0F172A;border-radius:10px;padding:20px;box-shadow:0 4px 6px rgba(0,0,0,0.3);opacity:0;transform:translateY(20px);}
-.testimonial-card.visible{opacity:1;transform:translateY(0);}
-.testimonial-card p{font-style:italic;color:#F8FAFC;}
-.testimonial-card h4{color:#E11D48;margin-top:10px;font-weight:600;}
-
-/* CTA */
-#cta{text-align:center;background:#1E293B;border-radius:10px;}
-#cta h2{color:#E11D48;margin-bottom:20px;}
-
-/* FOOTER */
-footer{padding:40px 20px;text-align:center;color:#94A3B8;background:#0F172A;}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  #hero h1{font-size:2.5rem;}
-  #hero h2{font-size:1.3rem;}
-  #about{flex-direction:column;}
-  .hamburger{display:flex;}
-  .nav-links{display:none;}
-  .nav-links-mobile.active{display:flex;}
-}
-</style>
 </head>
 <body>
 
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-container">
-    <div class="nav-logo">Rhoda Ndege</div>
+    <div class="nav-logo">RN</div>
     <div class="nav-links">
-      <a href="#hero">Home</a>
+      <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#expertise">Expertise</a>
-      <a href="#programs">Programs</a>
-      <a href="#portfolio">Portfolio</a>
+      <a href="#services">What I Do</a>
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/Nyawino-Awino" target="_blank">GitHub</a>
       <a href="#testimonials">Testimonials</a>
-      <a href="#cta">Contact</a>
+      <a href="#contact">Contact</a>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
       <div></div>
@@ -195,120 +34,513 @@ footer{padding:40px 20px;text-align:center;color:#94A3B8;background:#0F172A;}
     </div>
   </div>
   <div class="nav-links-mobile" id="mobileMenu">
-    <a href="#hero">Home</a>
+    <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#expertise">Expertise</a>
-    <a href="#programs">Programs</a>
-    <a href="#portfolio">Portfolio</a>
+    <a href="#services">What I Do</a>
+    <a href="#projects">Projects</a>
     <a href="#testimonials">Testimonials</a>
-    <a href="#cta">Contact</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="container">
-    <h1>Hi, I’m Rhoda Ndege</h1>
-    <h2>Transforming Beginners into Job-Ready Tech Professionals</h2>
-    <p>I design and deliver structured digital skills and cloud transformation programs for individuals and corporate teams worldwide.</p><br>
-    <div class="buttons">
-      <a href="#cta" class="btn-primary">Book a Consultation</a>
-      <a href="#programs" class="btn-secondary">Explore Programs</a>
+<section id="home" class="hero">
+
+  <div class="hero-left">
+
+    <h1>
+      Hi, I'm <span class="highlight">Rhoda Ndege</span>
+    </h1>
+
+    <h2 class="typing-text">
+      Associate Cloud Engineer 
+      
+    </h2>
+
+    <p class="hero-description">
+      Architecting scalable, secure, and resilient cloud infrastructure. Passionate about cloud security and building systems that power the next generation of digital experiences.
+    </p>
+
+    <!-- Buttons -->
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">View Services</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
     </div>
+
+  
+
   </div>
+
+  <!-- Right Image -->
+  <div class="hero-right">
+    <img src="/img/my.jpg" alt="Profile Image">
+  </div>
+
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="container about-container">
-    <img src="/img/my.jpg" alt="Rhoda Ndege" class="about-photo">
-    <div id="about-text" class="about-text">
-      <h2>Bridging Skills Gaps, Transforming Careers</h2> <br>
+<section id="about" class="about">
+
+  <div class="about-container">
+
+    <!-- Image -->
+    <div class="about-image">
+      <img src="/img/my.jpg" alt="About Image">
+    </div>
+
+    <!-- Text -->
+    <div class="about-content">
+
+      <h2>Who I Am</h2>
+
       <p>
-        I specialize in delivering practical, outcome-focused training in <strong>cloud computing (AWS)</strong>,
-        <strong>data analysis</strong>, and <strong>digital skills programs</strong>. I have contributed to
-        curriculum development, structured lab manuals, and remote program delivery for individuals and
-        corporate teams. My goal is to equip learners with practical competencies that lead to career readiness.
+        I am an Associate Cloud Engineer with a strong background incloud architecture, infrastructure, and security best practices.My journey into cloud computing began with a deep curiosity about how modern applications scale to millioms of users reliablely and securely.
+      </p>
+
+      <p>
+        I specialize in designing and deploying AWS-based solutions, implementing Infrastructure as code. I am particularly passionate about cloud security - ensuring thta every system I build is noy only performing but also hardened against threats and malware.
+      </p>
+
+      <p>
+        Beyong infrastructure, I bring strong skills in technical skills training, allowing me to train others on cloud and bridge the gap between theory and real world deployemnt. I thrive in a collaborative envirnment where I can contribue to both technical architecture decisions and hands-on implementation.
+      </p>
+
+
+      <!-- Achievements -->
+      <div class="about-achievements">
+
+        <div class="achievement-card">
+          <h3>Certifications</h3>
+          <p>AWS Solution Architect - Associate | AWS | 2025</p>
+          <p>AWS Cloud Practitioner | AWS | 2024</p>
+        </div>
+
+
+      <!-- Achievements -->
+      <div class="about-achievements">
+
+        <div class="achievement-card">
+          <h3>AWS</h3>
+          <p>Best Trainer of the Year Award - 2025</p>
+        </div>
+
+        <div class="achievement-card">
+          <h3>Training & Mentorship</h3>
+          <p>Over 1000+ learners trained and mentored</p>
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section id="services" class="services">
+
+  <div class="services-container">
+
+    <!-- Left Side: Title & Subtitle -->
+    <div class="services-left">
+      <h2>WHAT I DO</h2>
+      <p>
+        A comprehensive range of cloud engineering services designed to help organisations build, secure, and scale their digital infrastructure.
       </p>
     </div>
+
+    <!-- Right Side: Cards -->
+    <div class="services-right">
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-cloud"></i></div>
+        <h3>Infrastructure Configuration</h3>
+        <p>Provisioning and managing cloud infrastructure using AWS Cloud Formation, IaC, Kubernetes, version-controlled environment.</p>
+
+        <!-- Tech Stack -->
+    <div class="tech-stack">
+      <span>EC2</span>
+      <span>VPC</span>
+      <span>S3</span>
+      <span>Lambda</span>
+      <span>Networking</span>
+    </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Cloud Security</h3>
+        <p>Designing and implementing robust security architectures on AWS and GCP. IAM policy management, VPC security groups, firewall configuration, WAF configuration, encryption at rest and in transit.</p>
+
+        <!-- Tech Stack -->
+    <div class="tech-stack">
+      <span>IAM</span>
+      <span>KMS</span>
+      <span>WAF</span>
+      <span>GuardDuty</span>
+    </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fab fa-linux"></i></div>
+        <h3>Monitoring & Observability</h3>
+        <p>Setting up comprehensive monitoring, logging, and alerting systems. Cloud watch dashboards, Grafana and distributed tracking for full observability.</p>
+
+        <!-- Tech Stack -->
+    <div class="tech-stack">
+      <span>CloudWatch</span>
+      <span>X-Ray</span>
+      <span>CloudTrail</span>
+      <span>Grafana</span>
+    </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <h3>Container & Orchestartion</h3>
+        <p>Containerizing applications with Docker and orchestrating workloads with Kubernetes (EKS), Helm chart management, auto-scaling, and container security best practices</p>
+
+         <!-- Tech Stack -->
+    <div class="tech-stack">
+      <span>Docker</span>
+      <span>Kubernetes</span>
+      <span>EKS</span>
+      <span>Helm</span>
+    </div>
+      </div>
+
+     
+
+    </div>
+
   </div>
+
 </section>
 
-<!-- EXPERTISE -->
-<section id="expertise">
-  <div class="container">
-    <div class="expertise-grid">
-      <div class="expertise-card">
-        <h3>Cloud Transformation</h3>
-        <ul>
-          <li>AWS Infrastructure & Architecture</li>
-          <li>IAM & Security Best Practices</li>
-          <li>Scalable Multi-Tier Deployments</li>
-          <li>Certification Preparation</li>
-        </ul>
-      </div>
-      <div class="expertise-card">
-        <h3>Data Analysis</h3>
-        <ul>
-          <li>Advanced Excel & BI Tools</li>
-          <li>Data Visualization & Dashboards</li>
-          <li>Business Insights & Reporting</li>
-        </ul>
-      </div>
-      <div class="expertise-card">
-        <h3>Curriculum Development</h3>
-        <ul>
-          <li>Learning Path Design</li>
-          <li>Lab Manuals & Assessment Frameworks</li>
-          <li>Outcome-Based Training Models</li>
-        </ul>
-      </div>
-      <div class="expertise-card">
-        <h3>Digital Skills Programs</h3>
-        <ul>
-          <li>Corporate & Remote Training</li>
-          <li>Cohort Management & KPIs</li>
-          <li>Employability & Career Alignment</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- PROGRAMS -->
-<section id="programs">
-  <div class="container">
-    <div class="program-card" onclick="openModal('bootcamp')">
-      <h3>Cloud & Digital Skills Bootcamp</h3>
-      <p>Structured beginner-to-advanced pathway with hands-on labs and certification prep.</p>
-    </div>
-    <div class="program-card" onclick="openModal('corporate')">
-      <h3>Corporate Upskilling Programs</h3>
-      <p>Tailored training for teams adopting cloud and digital skills transformation.</p>
-    </div>
-    <div class="program-card" onclick="openModal('data')">
-      <h3>Data Analysis & BI Training</h3>
-      <p>Hands-on data handling, visualization, and business insights for professional growth.</p>
-    </div>
-  </div>
-</section>
 
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="container portfolio-grid">
-    <div class="portfolio-card">
-      <img src="/img/cloud.jpg" alt="Project 1">
-      <h3>Cloud Deployment Project</h3>
+<!-- PORTFOLIO/PROJECTS -->
+<section id="projects" class="projects-section">
+
+    <!-- TITLE -->
+
+    <div class="projects-header">
+
+        <span class="projects-label">
+           PORTFOLIO
+        </span>
+
+        <h2>Featured Work</h2>
+
+        <p>
+            Cloud infrastructure, security engineering,
+            DevOps automation, and scalable cloud deployments.
+        </p>
+
     </div>
-    <div class="portfolio-card">
-      <img src="/img/data1.jpg" alt="Project 2">
-      <h3>Data Analytics Dashboard</h3>
+
+    <!-- PROJECT GRID -->
+
+    <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img src="/img/vpc-diagram.png" alt="AWS Project">
+
+                <span class="status completed">
+                    Completed
+                </span>
+
+            </div>
+
+            <div class="project-content">
+
+                <h3>MySQL Deployment on AWS using Amazon RDS in a Custom VPC</h3>
+
+                <p>
+                    Designed and deployed a secure, highly available MySQL database architecture on Amazon Web Services using Amazon RDS within a custom-built VPC.
+                </p>
+
+                <!-- TAGS -->
+
+                <div class="project-tags">
+
+                    <span>VPC</span>
+                    <span>Subnets</span>
+                    <span>Security Groups</span>
+                    <span>Network ACLs</span>
+                    <span>RDS</span>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <a
+                    href="https://github.com/Nyawino-Awino/MySQL-Deployment-on-AWS-using-Amazon-RDS-"
+                    target="_blank"
+                    class="project-btn"
+                >
+                    <i class="fab fa-github"></i>
+                    View Code
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 2 -->
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img src="/img/aws_metadata_flow.png" alt="AWS Project">
+
+                <span class="status completed">
+                    Completed
+                </span>
+
+            </div>
+
+            <div class="project-content">
+
+                <h3>Automating Metadata Flow from S3 to DynamoDB</h3>
+
+                <p>
+                    Designed and deployed event-driven serverless pipeline to automatically extract and store file metadata from S3 uploads into a DynamoDB NoSQL table, enabling real-time data indexing and retrieval.
+                </p>
+
+                <!-- TAGS -->
+
+                <div class="project-tags">
+
+                    <span>AWS S3</span>
+                    <span>AWS Lambda</span>
+                    <span>DynamoDB</span>
+                    <span>IAM</span>
+                    <span>Python</span>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <a
+                    href="https://github.com/Nyawino-Awino/Automating-Metadata-Flow-from-S3-to-DynamoDB-with-AWS-Lambda"
+                    target="_blank"
+                    class="project-btn"
+                >
+                    <i class="fab fa-github"></i>
+                    View Code
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 3 -->
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img src="/img/static-web.png" alt="AWS Project">
+
+                <span class="status completed">
+                    Completed
+                </span>
+
+            </div>
+
+            <div class="project-content">
+
+                <h3>Hosting a Static Website in Amazon S3</h3>
+
+                <p>
+                    Designed and deployed a static personal website on AWS S3, configured CloudFront, and connected a custom domain via Route53. Implemented S3 bucket policies and IAM permission controls to follow least privilege security practices.
+                </p>
+
+                <!-- TAGS -->
+
+                <div class="project-tags">
+
+                    <span>AWS S3</span>
+                    <span>CloudFront</span>
+                    <span>Route53</span>
+                    <span>IAM</span>
+                    <span>HTML/CSS</span>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <a
+                    href="https://medium.com/@awino0149/deploying-a-static-website-using-s3-route-53-and-cloudfront-a-step-by-step-guide-d52360604154"
+                    target="_blank"
+                    class="project-btn"
+                >
+                    <i class="fab fa-github"></i>
+                    View Code
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 4 -->
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img src="/img/iam-architecture.png" alt="AWS Project">
+
+                <span class="status completed">
+                    Completed
+                </span>
+
+            </div>
+
+            <div class="project-content">
+
+                <h3>Cloud Security with IAM Access Controls.</h3>
+
+                <p>
+                    This hands-on project demonstrates practical cloud security management in AWS, focusing on access controls, user roles and the principle of least privilege.
+                </p>
+
+                <!-- TAGS -->
+
+                <div class="project-tags">
+
+                    <span>EC2</span>
+                    <span>IAM Policies</span>
+                    <span>Users & Groups</span>
+                    <span>IAM</span>
+                    <span>Least Priviledge Access</span>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <a
+                    href="https://medium.com/@awino0149/cloud-security-with-iam-access-controls-26e87cc4f75f"
+                    target="_blank"
+                    class="project-btn"
+                >
+                    <i class="fab fa-github"></i>
+                    View Code
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+
+        <!-- PROJECT 5 -->
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img src="images/project2.jpg" alt="Cloud Security">
+
+                <span class="status progress">
+                    In Progress
+                </span>
+
+            </div>
+
+            <div class="project-content">
+
+                <h3>Cloud Security Hardening Framework</h3>
+
+                <p>
+                    Implementing IAM policies, CloudTrail logging,
+                    GuardDuty monitoring, KMS encryption,
+                    and AWS Config compliance reporting.
+                </p>
+
+                <div class="project-tags">
+
+                    <span>AWS Security</span>
+                    <span>IAM</span>
+                    <span>CloudTrail</span>
+                    <span>GuardDuty</span>
+
+                </div>
+
+                <a
+                    href="https://github.com/yourusername/project2"
+                    target="_blank"
+                    class="project-btn"
+                >
+                    <i class="fab fa-github"></i>
+                    View Code
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 3 -->
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img src="images/project3.jpg" alt="Kubernetes">
+
+                <span class="status completed">
+                    In Progress
+                </span>
+
+            </div>
+
+            <div class="project-content">
+
+                <h3>Kubernetes Microservices Platform</h3>
+
+                <p>
+                    Deployed containerized applications on Amazon EKS
+                    with Helm, Prometheus monitoring,
+                    GitOps workflow, and CI/CD automation.
+                </p>
+
+                <div class="project-tags">
+
+                    <span>Kubernetes</span>
+                    <span>EKS</span>
+                    <span>Docker</span>
+                    <span>Prometheus</span>
+
+                </div>
+
+                <a
+                    href="https://github.com/yourusername/project3"
+                    target="_blank"
+                    class="project-btn"
+                >
+                    <i class="fab fa-github"></i>
+                    View Code
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="portfolio-card portfolio-card-center">
-      <img src="img/digital skills.jpg" alt="Project 3">
-      <h3>Digital Skills Program</h3>
-    </div>
-  </div>
+
 </section>
 
 <!-- MODAL -->
@@ -323,11 +555,14 @@ footer{padding:40px 20px;text-align:center;color:#94A3B8;background:#0F172A;}
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
+  <h2>Feedback from Clients</h2>
+ 
   <div class="container">
     <div class="expertise-grid">
     <div class="testimonial-card">
-      <p>"Clear, structured, and career-focused training — highly recommended."</p>
-      <h4>- Digital Skills Program Participant</h4>
+      
+      <p>"Clear, structured, and project delivered on time"</p>
+      <h4>- Remote Client</h4>
     </div>
     <div class="testimonial-card">
       <p>"From beginner to confidently deploying AWS architectures in weeks."</p>
@@ -335,7 +570,7 @@ footer{padding:40px 20px;text-align:center;color:#94A3B8;background:#0F172A;}
     </div>
     <div class="testimonial-card">
       <p>"Rhoda is a great teachop. We were priviledged to have her. She understands and embraces everyone in whatever situation they are in. She is invaluable, tunampenda."</p>
-      <h4>- Student</h4>
+      <h4>- Cloud Bootcamp Learner</h4>
     </div>
     <div class="testimonial-card">
       <p>"Rhoda was so encouraging. She always checked in whenever I haven't completed the Labs and the weeks activities.She always took a personal initiative to understand what exactly might be the issue, then offer a solution to it. This was so parent like."</p>
@@ -353,38 +588,175 @@ footer{padding:40px 20px;text-align:center;color:#94A3B8;background:#0F172A;}
   </div>
 </section>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="container">
-    <h2>Ready to Upskill Your Team or Yourself?</h2>
-    <div class="buttons" style="justify-content:center;margin-top:20px;">
-      <!-- Book a consultation-->
-      <a href="mailto:youremail@example.com"subject=Consultation%20Request&body=Hi%20[Your Name],%0A%0AI%20would%20like%20to%20book%20a%20consultation.%0A%0AThanks," class="btn-primary">Book a Consultation</a>
-      <a href="#programs" class="btn-secondary">Partner With Me</a>
+<!-- CONTACT ME -->
+<section id="contact" class="contact-section">
+
+<div class="contact-wrapper">
+
+    <!-- LEFT SIDE -->
+    <div class="contact-left">
+
+        <span class="contact-label">CONTACT</span>
+
+        <h2>Let's Work Together</h2>
+
+        <p class="contact-text">
+            Have a cloud project in mind, need infrastructure expertise,
+            or looking for a cloud security consultant?
+            I’d love to hear from you.
+        </p>
+
+        <!-- CONTACT CARDS -->
+
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+
+            <div>
+                <h4>EMAIL</h4>
+                <p>awino0149@gmail.com</p>
+                <span>Drop me an email anytime</span>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+
+            <div>
+                <h4>PHONE</h4>
+                <p>+254 733 917 142</p>
+                <span>Available Mon–Fri</span>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+
+            <div>
+                <h4>LOCATION</h4>
+                <p>Remote / Worldwide</p>
+                <span>Open to international opportunities</span>
+            </div>
+        </div>
+
+        <!-- SOCIALS -->
+
+        <div class="social-section">
+
+            <h5>FIND ME ONLINE</h5>
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- STATUS -->
+
+        <div class="availability">
+
+            <span class="dot"></span>
+
+            <p>Open to Opportunities</p>
+
+        </div>
+
     </div>
-  </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="contact-right">
+
+        <form
+            action="https://formspree.io/f/yourformid"
+            method="POST"
+            class="contact-form"
+        >
+
+            <h3>Send a Message</h3>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Full Name *</label>
+                    <input type="text" name="name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address *</label>
+                    <input type="email" name="email" required>
+                </div>
+
+            </div>
+
+            <div class="input-group">
+                <label>Subject *</label>
+                <input type="text" name="subject">
+            </div>
+
+            <div class="input-group">
+                <label>Message *</label>
+
+                <textarea
+                    rows="6"
+                    name="message"
+                    placeholder="Tell me about your project or opportunity..."
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
 </section>
+
+<!-- Modal Form -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeContactModal()">&times;</span>
+    <h3>Send an Inquiry</h3>
+    <form action="https://formspree.io/f/yourformid" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-container">
 
-    <div class="footer-left">
-      <h3>Rhoda Ndege</h3>
-      <p>Cloud | Data | Corporate Upskilling</p>
-    </div>
-
-    <div class="footer-contact">
-      <p>
-        📧 <a href="mailto:your@email.com">awino0149@gmail.com</a>
-      </p>
-      <p>
-        📱 <a href="tel:+254700000000">+254 714 917 142</a>
-      </p>
-    </div>
+    
 
     <div class="footer-right">
-      <p>© 2026 Rhoda Ndege. All Rights Reserved.</p>
+      <p>© 2026 Cloud Engineer Portfolio. All Rights Reserved.</p>
     </div>
 
   </div>
@@ -430,6 +802,15 @@ window.addEventListener("scroll",()=>{
   sections.forEach(sec=>{const sectionTop=sec.offsetTop-100;if(pageYOffset>=sectionTop){current=sec.getAttribute("id");}});
   navLinks.forEach(a=>{a.classList.remove("active");if(a.getAttribute("href")==="#"+current){a.classList.add("active");}});
 });
+
+// CONTACT ME 
+function openContactModal(){
+  document.getElementById('contactModal').style.display='flex';
+}
+
+function closeContactModal(){
+  document.getElementById('contactModal').style.display='none';
+}
 </script>
 
 </body>
